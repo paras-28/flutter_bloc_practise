@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_practise/controllers/home/home_controller_bloc.dart';
 import 'package:flutter_bloc_practise/ui/utility/cutom_circular_progress_indicator.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../controllers/home_view_controller.dart';
+// import '../controllers/home_view_controller.dart';
 
 class HomeView extends StatefulWidget {
   HomeView({Key? key}) : super(key: key);
@@ -25,13 +23,13 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+    // var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'Home',
           style: GoogleFonts.poppins(
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w400,
               fontSize: 17.0,
@@ -55,7 +53,7 @@ class _HomeViewState extends State<HomeView> {
                     leading: Text(
                       index.toString(),
                       style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w400,
                           fontSize: 17.0,
@@ -65,7 +63,7 @@ class _HomeViewState extends State<HomeView> {
                     title: Text(
                       state.list[index].title.toString() ?? "Fake",
                       style: GoogleFonts.poppins(
-                        textStyle: TextStyle(
+                        textStyle: const TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.w400,
                           fontSize: 17.0,
