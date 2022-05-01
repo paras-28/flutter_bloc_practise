@@ -6,6 +6,6 @@ class CounterState {
 
   CounterState({
     required this.counterValue,
-     required this.wasIncremented,
+    required this.wasIncremented,
   });
 }

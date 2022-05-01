@@ -1,23 +1,22 @@
+import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
+
 import 'package:flutter_bloc_practise/domain/app_exceptions.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert';
-
-import 'dart:async';
 
 class ApiBaseHelper {
-
-  final  String _baseUrl = "";
+  final String _baseUrl = "";
 
   Future<dynamic> get(String url) async {
     print('Api Get, url $url');
     var responseJson;
     try {
-      final response = await http.get(Uri.parse(  url));
+      final response = await http.get(Uri.parse(url));
       responseJson = _returnResponse(response);
     } on SocketException {
       print('No net');
-      throw FetchDataException(message:  'No Internet connection');
+      throw FetchDataException(message: 'No Internet connection');
     }
     print('api get recieved!');
     return responseJson;
@@ -41,8 +40,7 @@ class ApiBaseHelper {
     print('Api Put, url $url');
     var responseJson;
     try {
-      final response = await http.put( Uri.parse(_baseUrl + url)
-          , body: body);
+      final response = await http.put(Uri.parse(_baseUrl + url), body: body);
 
       responseJson = _returnResponse(response);
     } on SocketException {
@@ -83,6 +81,7 @@ dynamic _returnResponse(http.Response response) {
     case 500:
     default:
       throw FetchDataException(
-        message : 'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
+          message:
+              'Error occured while Communication with Server with StatusCode : ${response.statusCode}');
   }
 }

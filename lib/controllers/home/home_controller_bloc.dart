@@ -5,7 +5,6 @@ import 'package:flutter_bloc_practise/domain/repository/app_repository.dart';
 import 'package:meta/meta.dart';
 
 part 'home_controller_event.dart';
-
 part 'home_controller_state.dart';
 
 class HomeControllerBloc

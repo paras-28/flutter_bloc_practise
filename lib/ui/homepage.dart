@@ -14,11 +14,9 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
-
   @override
   void initState() {
- context.read<HomeControllerBloc>() .add(ApiHitHomeControllerEvent());
+    context.read<HomeControllerBloc>().add(ApiHitHomeControllerEvent());
   }
 
   @override
@@ -43,8 +41,7 @@ class _HomeViewState extends State<HomeView> {
           builder: (context, state) {
             if (state is HomeControllerLoadingState) {
               return CustomCircularProgressIndicator();
-            }
-            else if (state is HomeControllerLoadedState) {
+            } else if (state is HomeControllerLoadedState) {
               return ListView.builder(
                 shrinkWrap: true,
                 itemCount: state.list.length,
@@ -73,10 +70,9 @@ class _HomeViewState extends State<HomeView> {
                   );
                 },
               );
-            }
-            else {
+            } else {
               return ErrorView(
-                errorText: "OOPS Something wrong",
+                errorText: 'Something went wrong',
               );
             }
           }),

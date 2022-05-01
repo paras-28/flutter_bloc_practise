@@ -45,10 +45,7 @@ class _CounterScreenState extends State<CounterScreen> {
             BlocConsumer<CounterCubit, CounterState>(
               listener: (context, state) {
                 if (state.wasIncremented == true) {
-
-                } else if (state.wasIncremented == false) {
-
-                }
+                } else if (state.wasIncremented == false) {}
               },
               builder: (context, state) {
                 if (state.counterValue < 0) {
@@ -59,19 +56,14 @@ class _CounterScreenState extends State<CounterScreen> {
                 } else if (state.counterValue % 2 == 0) {
                   return Text(
                     'Even ' + state.counterValue.toString(),
-                    style: Theme
-                        .of(context)
-                        .textTheme
-                        .headline4,
+                    style: Theme.of(context).textTheme.headline4,
                   );
-                }
-                  else if (state.counterValue % 2 != 0) {
+                } else if (state.counterValue % 2 != 0) {
                   return Text(
                     'ODD ' + state.counterValue.toString(),
                     style: Theme.of(context).textTheme.headline4,
                   );
-                }
-                  else
+                } else
                   return Text(
                     state.counterValue.toString(),
                     style: Theme.of(context).textTheme.headline4,
