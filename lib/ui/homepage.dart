@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 // import '../controllers/home_view_controller.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({Key? key}) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -17,6 +17,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     context.read<HomeControllerBloc>().add(ApiHitHomeControllerEvent());
+    super.initState();
   }
 
   @override
@@ -36,7 +37,6 @@ class _HomeViewState extends State<HomeView> {
         ),
       ),
       body: BlocConsumer<HomeControllerBloc, HomeControllerState>(
-          // init: ProductController(),
           listener: (context, state) => {},
           builder: (context, state) {
             if (state is HomeControllerLoadingState) {
