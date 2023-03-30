@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCircularProgressIndicator extends StatelessWidget {
-  bool isFullScreen;
+ final  bool isFullScreen;
 
-  CustomCircularProgressIndicator({Key? key, this.isFullScreen = false})
+ const  CustomCircularProgressIndicator({Key? key, this.isFullScreen = false})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return const Center(
       child: CircularProgressIndicator(
-        color: Colors.blue,
+        color: Colors.redAccent,
       ),
     );
   }

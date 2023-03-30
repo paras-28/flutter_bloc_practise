@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_bloc_practise/controllers/home/home_controller_bloc.dart';
+import 'package:flutter_bloc_practise/ui/home_basic/home_basic._screen.dart';
 import 'package:flutter_bloc_practise/ui/homepage.dart';
+
+import 'controllers/home_basic/home_basic_bloc.dart';
+
+
+//Info
+//HomeControllerBloc is Equatable approach
 
 void main() {
   // for counter app
@@ -9,7 +16,11 @@ void main() {
 
   runApp(
     MultiBlocProvider(
-        providers: [BlocProvider(create: (_) => HomeControllerBloc())],
+        providers: [
+
+          BlocProvider(create: (_) => HomeControllerBloc()),
+          BlocProvider(create: (_) => HomeBasicBloc())
+        ],
         child: const MyApp()),
   );
 }
@@ -25,7 +36,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: MyCounterApp(),
-      home: HomeView(),
+      //Info for homeController
+      //  home: HomeView(),
+      //Info for HomeBasic
+      home: HomeBasicScreen(),
     );
   }
 }

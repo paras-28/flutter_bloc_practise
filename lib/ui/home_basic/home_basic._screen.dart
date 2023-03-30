@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_bloc_practise/controllers/home/home_controller_bloc.dart';
+import 'package:flutter_bloc_practise/controllers/home_basic/home_basic_bloc.dart';
 import 'package:flutter_bloc_practise/ui/utility/cutom_circular_progress_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 // import '../controllers/home_view_controller.dart';
 
-class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+class HomeBasicScreen extends StatefulWidget {
+  const HomeBasicScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  State<HomeBasicScreen> createState() => _HomeBasicScreenState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeBasicScreenState extends State<HomeBasicScreen> {
 
   @override
   void initState() {
-    context.read<HomeControllerBloc>().add(ApiHitHomeControllerEvent());
+    context.read<HomeBasicBloc>().add(HomeBasicEventHitApi());
     super.initState();
   }
 
@@ -25,6 +25,13 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     // var size = MediaQuery.of(context).size;
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: ()
+        {
+          context.read<HomeBasicBloc>().add(HomeBasicEventAnother());
+        },
+
+      ),
       appBar: AppBar(
         title: Text(
           'Home',
@@ -37,12 +44,12 @@ class _HomeViewState extends State<HomeView> {
           ),
         ),
       ),
-      body: BlocConsumer<HomeControllerBloc, HomeControllerState>(
+      body: BlocConsumer<HomeBasicBloc, HomeBasicState>(
           listener: (context, state) => {},
           builder: (context, state) {
-            if (state is HomeControllerLoadingState) {
-              return CustomCircularProgressIndicator();
-            } else if (state is HomeControllerLoadedState) {
+            if (state.showLoader) {
+              return const CustomCircularProgressIndicator();
+            } else if (state.list.isNotEmpty) {
               return ListView.builder(
                 shrinkWrap: true,
                 itemCount: state.list.length,
@@ -73,7 +80,7 @@ class _HomeViewState extends State<HomeView> {
               );
             } else {
               return ErrorView(
-                errorText: 'Something went wrong',
+                errorText: state.hasError,
               );
             }
           }),

@@ -9,3 +9,4 @@ abstract class HomeControllerEvent extends Equatable {
 }
 
 class ApiHitHomeControllerEvent extends HomeControllerEvent {}
+class LoadingEvent extends HomeControllerEvent {}
