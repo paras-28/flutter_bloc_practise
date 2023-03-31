@@ -25,6 +25,7 @@ class HomeBasicBloc extends Bloc<HomeBasicEvent, HomeBasicState> {
 
     on<HomeBasicEventAnother>((event, emit) {
       debugPrint("Event : HomeBasicEventAnother called");
+      emit(state.copyWith(communicateToAnotherBloc: true));
     });
 
 

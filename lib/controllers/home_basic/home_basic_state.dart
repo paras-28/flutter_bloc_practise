@@ -5,12 +5,14 @@ class  HomeBasicState {
  final List<CustomModel> list;
  final  bool showLoader;
   final String hasError;
+  final bool communicateToAnotherBloc;
 
 //<editor-fold desc="Data Methods">
   const HomeBasicState({
      this.list =const [],
      this.showLoader = true,
      this.hasError = '',
+     this.communicateToAnotherBloc = false,
   });
 
 
@@ -18,10 +20,12 @@ class  HomeBasicState {
     List<CustomModel>? list,
     bool? showLoader,
     String? hasError,
+    bool? communicateToAnotherBloc,
   }) {
     return HomeBasicState(
       list: list ?? this.list,
       showLoader: showLoader ?? this.showLoader,
+      communicateToAnotherBloc: communicateToAnotherBloc ?? this.communicateToAnotherBloc,
       hasError: hasError ?? this.hasError,
     );
   }
