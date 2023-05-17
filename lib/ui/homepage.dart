@@ -17,8 +17,8 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   void initState() {
-    context.read<HomeControllerBloc>().add(ApiHitHomeControllerEvent());
     super.initState();
+    context.read<HomeControllerBloc>().add(ApiHitHomeControllerEvent());
   }
 
   @override
@@ -41,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
           listener: (context, state) => {},
           builder: (context, state) {
             if (state is HomeControllerLoadingState) {
-              return CustomCircularProgressIndicator();
+              return const CustomCircularProgressIndicator();
             } else if (state is HomeControllerLoadedState) {
               return ListView.builder(
                 shrinkWrap: true,
